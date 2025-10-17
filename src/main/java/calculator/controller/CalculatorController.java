@@ -1,7 +1,10 @@
 package calculator.controller;
 
+import calculator.model.Calculator;
+import calculator.model.Splitter;
 import calculator.view.InputView;
 import calculator.view.OutputView;
+import java.util.List;
 
 public class CalculatorController {
     private final OutputView outputview;
@@ -14,6 +17,8 @@ public class CalculatorController {
 
     public void run() {
         String input = inputview.readExpression();
-        outputview.printResult();
+        List<String> numbers = Splitter.split(input);
+        int result = Calculator.add(numbers);
+        outputview.printResult(result);
     }
 }

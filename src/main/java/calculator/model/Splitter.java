@@ -7,7 +7,9 @@ import java.util.List;
 
 public class Splitter {
     public static List<String> split(String input) {
-        InputValidator.validateNotEmpty(input);
+        if(input == null || input.isEmpty()) {
+            return List.of("0");
+        }
 
         String [] parts;
         if(input.startsWith(Symbol.CUSTOM_DELIMITER_PREFIX)) {

@@ -3,25 +3,24 @@ package calculator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
     @Test
-    void 커스텀_구분자_사용() {
-        assertSimpleTest(() -> {
-            run("//;\\n1");
-            assertThat(output()).contains("결과 : 1");
-        });
+    void 기본_구문자_덧셈() {
+        run("1,2,3");
+        assertThat(output()).contains("결과 : 6");
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("-1,2,3"))
+    void 숫자가_아닌_입력_예외() {
+        assertThatThrownBy(() -> runException("1,a,3"))
                 .isInstanceOf(IllegalArgumentException.class)
-        );
+                .hasMessageContaining("숫자만 입력 가능합니다.");
     }
 
     @Override

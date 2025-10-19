@@ -11,6 +11,8 @@ public class Splitter {
             return List.of("0");
         }
 
+        input = input.replace("\\n", "\n");
+
         String [] parts;
         if(input.startsWith(Symbol.CUSTOM_DELIMITER_PREFIX)) {
             String[] splitParts = input.split(Symbol.CUSTOM_DELIMITER_SUFFIX, 2);

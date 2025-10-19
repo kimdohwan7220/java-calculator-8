@@ -10,7 +10,7 @@ public class InputValidator {
     }
 
     public static void validateNumeric (String input) {
-        if (!input.matches("\\d+")) {
+        if (!input.matches("-?\\d+")) {
             throw new IllegalArgumentException(Messages.INVALID_NUMBER_ERROR);
         }
     }
